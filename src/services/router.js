@@ -6,6 +6,8 @@ import {
   updateService,
   getServicesByGivenPriceRange,
   getGroupedByPriceServices,
+  getReportForBookedServices,
+  getAllServicesForUser,
 } from "./controller.js";
 import {
   returnResponse,
@@ -64,6 +66,14 @@ export function getRouter() {
     "[DELETE]/service": async (req, res) => {
       const serviceId = extractId(req);
       await deleteService(serviceId);
+
+      returnResponse({ res });
+    },
+    "[GET]/services-for-user": async (req, res) => {
+      returnResponse({ res, data: await getAllServicesForUser() });
+    },
+    "[GET]/services/report": async (req, res) => {
+      await getReportForBookedServices();
 
       returnResponse({ res });
     },

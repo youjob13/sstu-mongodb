@@ -1,5 +1,6 @@
 import * as MongoDb from "mongodb";
 import { connectToCollection } from "../mongodb.js";
+import { getReport } from "./report.js";
 
 const servicesCollection = connectToCollection("services");
 
@@ -76,4 +77,12 @@ export async function getServicesByGivenPriceRange({ from, to }) {
       price: { $gte: from, $lte: to },
     })
     .toArray();
+}
+
+export async function getReportForBookedServices() {
+  getReport(servicesCollection);
+}
+
+export async function getAllServicesForUser(userId) {
+  return await servicesCollection.find({ userId }).toArray();
 }

@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^6.6.1"
+    "csv-stringify": "^6.5.0",
+    "mongodb": "^6.6.1",
+    "xslx": "^1.0.0"
   }
 }
